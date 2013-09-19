@@ -16,6 +16,15 @@ setup:
 boot: setup
 	i586-elf-as boot/boot.s -o build/boot.o
 
+.PHONY: kernel
+kernel: setup
+	i586-elf-gcc -c kernel/kernel_main.c \
+		-o build/kernel.o \
+		-std=c99 \
+		-ffreestanding \
+		-O2 -Wall -Wextra
+
+
 .PHONY: clean
 clean:
 	rm -f *.[1-8]
