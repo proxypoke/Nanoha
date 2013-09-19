@@ -30,7 +30,7 @@ CFLAGS := -g -std=c99 $(WARNINGS) -Iinclude -ffreestanding -O2
 all: nanoha.bin
 
 nanoha.bin: linker.ld $(OBJFILES)
-	@i586-elf-gcc -T linker.ld \
+	@$(CC) -T linker.ld \
 		-o nanoha.bin \
 		-ffreestanding \
 		-O2 \
