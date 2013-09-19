@@ -14,7 +14,7 @@ Nanoha - the Nano Hardware Abstraction kernel
 DESCRIPTION
 -----------
 Nanoha is Yet Another Kernel™, and really no attempt to write anything out of the
-ordinary. It's a project for the sake of itself, and a quest for knowlegde. If
+ordinary. It's a project for the sake of itself, and a quest for knowledge. If
 it will ever be useful is something I don't know, and really don't care about -
 though it would be kinda cool.
 
