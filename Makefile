@@ -6,24 +6,36 @@
 # the Anti-License. Do whatever the fuck you want.
 
 .PHONY: all
-all: 
-	@echo "Nothing to see here (yet), move along."
+all: link
 
 setup:
 	@mkdir -p build
 
 .PHONY: boot
 boot: setup
-	i586-elf-as boot/boot.s -o build/boot.o
+	@echo "Assembling boot.s..."
+	@i586-elf-as boot/boot.s -o build/boot.o
 
 .PHONY: kernel
 kernel: setup
-	i586-elf-gcc -c kernel/kernel_main.c \
+	@echo "Compiling kernel..."
+	@i586-elf-gcc -c kernel/kernel_main.c \
 		-o build/kernel.o \
 		-std=c99 \
 		-ffreestanding \
 		-O2 -Wall -Wextra
 
+.PHONY: link
+link: boot kernel
+	@echo "Linking kernel..."
+	@i586-elf-gcc -T kernel/linker.ld \
+		-o build/nanoha.bin \
+		-ffreestanding \
+		-O2 \
+		-nostdlib \
+		-lgcc \
+		build/boot.o \
+		build/kernel.o
 
 .PHONY: clean
 clean:
