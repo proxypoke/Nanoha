@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# mkfile - create a new file with a header comment
+#
+# This file is part of Nanoha.
+#
+# Nanoha is Free Software under the non-terms of
+# the Anti-Licencse. Do whatever the fuck you want.
+
+import argparse
+import sys
+
+parser = argparse.ArgumentParser(
+    description="Create a header comment for files.")
+
+parser.add_argument("name", help="name of the file", type=str)
+parser.add_argument("desc", help="short description of the file", type=str)
+
+if __name__ == "__main__":
+    args = parser.parse_args()
+    try:
+        with open("header") as headerfile:
+            headertext = headerfile.read()
+            print(headertext.format(file=args.name, short_desc=args.desc))
+    except:
+        print("Template header file could not be found or is unreadable.",
+              file=sys.stderr)
