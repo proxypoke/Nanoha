@@ -1,0 +1,43 @@
+NANOHA(7)
+=========
+slowpoke <mail+git@slowpoke.io>
+v0.0
+:encoding: utf-8
+:doctype: manpage
+:man source: Tinfoil Wizards Software Dev
+:man manual: Nanoha Development Manual
+
+NAME
+----
+Nanoha - the Nano Hardware Abstraction kernel
+
+DESCRIPTION
+-----------
+Nanoha is Yet Another Kernel™, and really no attempt to write anything out of the
+ordinary. It's a project for the sake of itself, and a quest for knowlegde. If
+it will ever be useful is something I don't know, and really don't care about -
+though it would be kinda cool.
+
+As the name implies, Nanoha is supposed to become a microkernel. Whether I can
+pull that off is unclear, but we'll see about that as I go along.
+
+ROADMAP
+-------
+First of all, there's no real plan. There are some things, however, which
+definitely need to be implemented to get anywhere:
+
+- a simple VGA driver
+- basic routines for operation and debugging (kprint, panic, etc)
+- interrupt handling
+- memory management (malloc, free, memcpy, etc)
+
+Further down the road are things like a keyboard driver,
+forking/multiprocessing, and a (simple) shell. I'm still undecided about using a
+bash-like shell or porting, for example, a Scheme (or just implement one).
+
+LIBC
+----
+Things which belong into a libc should be implemented as such. If, somewhen in
+the future, Nanoha should need more than just small parts of a standard library,
+it will be time to either port one of the available ones (like newlib) or write
+more from scratch.

@@ -1,0 +1,8 @@
+# generated docs and man-pages
+*.html
+*.[1-8]
+
+# binary files
+*.o
+*.bin
+*.iso
