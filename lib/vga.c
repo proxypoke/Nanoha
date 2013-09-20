@@ -50,7 +50,7 @@ void term_putchar(char c) {
         case '\n':
             term_col = 0;
             term_row++;
-            break;
+            return;
         default:
             term_putentryat(c, term_color, term_col, term_row);
     }
