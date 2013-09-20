@@ -9,7 +9,7 @@ CC := i586-elf-gcc
 AS := i586-elf-as
 AR := i586-elf-ar
 
-DIRS := boot include kernel lib
+DIRS := boot include kernel
 
 SRCFILES := $(shell find $(DIRS) -type f -name "*.c")
 HDRFILES := $(shell find $(DIRS) -type f -name "*.h")
@@ -45,7 +45,7 @@ nanoha.bin: linker.ld libc/libc.a $(OBJFILES)
 		libc/libc.a
 
 libc/libc.a: $(LIBCOBJ)
-	@$(AR) -cvq libc/libc.a $(LIBCOBJ)
+	@$(AR) -cq libc/libc.a $(LIBCOBJ)
 
 clean:
 	-@$(RM) $(wildcard $(OBJFILES) $(DEPFILES) nanoha.bin)
