@@ -14,7 +14,7 @@
 #include <vga.h>
 
 void kprint(const char* str) {
-    for (size_t i = 0; i < strlen(str); i++) {
-        term_putchar(str[i]);
+    for (const char* tmp = str; *tmp; tmp++) {
+        term_putchar(*tmp);
     }
 }
