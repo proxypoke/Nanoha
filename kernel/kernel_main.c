@@ -6,5 +6,10 @@
  * the Anti-License. Do whatever the fuck you want.
  */
 
+#include <kernel.h>
+#include <vga.h>
+
 void kernel_main(void) {
+    term_init();
+    kprint("Standby ready, set up!");
 }

@@ -59,7 +59,8 @@ clean:
 
 # Makefile is listed as a dep in case the CFLAGS are changed
 %.o: %.c Makefile
-	@$(CC) $(CFLAGS) -Iinclude -ffreestanding -MMD -MP -c $< -o $@
+	@$(CC) $(CFLAGS) -Iinclude -Ilibc/include \
+		-ffreestanding -MMD -MP -c $< -o $@
 
 %-asm.o: %.s Makefile
 	@$(AS) $< -o $@

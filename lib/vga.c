@@ -46,8 +46,6 @@ void term_putentryat(char c, uint8_t color, size_t x, size_t y) {
 }
 
 void term_putchar(char c) {
-    term_putentryat(c, term_color, term_col, term_row);
-    /*
     switch (c) {
         case '\n':
             term_col = 0;
@@ -56,7 +54,6 @@ void term_putchar(char c) {
         default:
             term_putentryat(c, term_color, term_col, term_row);
     }
-    */
     if (++term_col == VGA_WIDTH) {
         term_col = 0;
         if (++term_row == VGA_HEIGHT) {
