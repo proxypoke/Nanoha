@@ -73,3 +73,6 @@ libc/%.o: libc/%.c Makefile
 
 qemu-runkernel: nanoha.bin
 	@qemu-system-i386 -kernel nanoha.bin
+
+qemu-debug: nanoha.bin
+	@qemu-system-i386 -s -S -kernel nanoha.bin

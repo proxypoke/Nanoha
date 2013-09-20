@@ -11,5 +11,5 @@
 
 void kernel_main(void) {
     term_init();
-    kprint("Standby ready, set up!");
+    kprint("Standby ready, set up!\n");
 }

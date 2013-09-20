@@ -2,7 +2,9 @@
 *.html
 *.[1-8]
 
-# binary files
+# binary/dependency files
 *.o
 *.bin
 *.iso
+*.a
+*.d
