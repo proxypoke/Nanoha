@@ -18,8 +18,8 @@ uint16_t vga_mkentry(char c, uint8_t color) {
     return c16 | (color16 << 8);
 }
 
-static const size_t VGA_HEIGHT = 80;
-static const size_t VGA_WIDTH = 24;
+static const size_t VGA_HEIGHT = 24;
+static const size_t VGA_WIDTH = 80;
 
 static size_t term_row;
 static size_t term_col;
