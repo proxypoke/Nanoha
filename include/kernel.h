@@ -7,4 +7,7 @@
  */
 
 /* Print a message. */
-void kprint(const char* str);
+void kprint(const char*, ...);
+
+/* Abort with a kernel panic. */
+void panic(const char* reason);
