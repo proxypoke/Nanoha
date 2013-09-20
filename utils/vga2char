@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# vga2char - extract the character from a vga entry
+#
+# This file is part of Nanoha.
+#
+# Nanoha is Free Software under the non-terms of
+# the Anti-Licencse. Do whatever the fuck you want.
+
+import argparse
+
+parser = argparse.ArgumentParser(
+    description="extract a character from a vga entry")
+
+parser.add_argument("vga", help="vga entry as dec", type=int)
+
+if __name__ == "__main__":
+    args = parser.parse_args()
+    # eliminate all bits > 8
+    char = args.vga & 0b11111111
+    print("'{char}' ({int} | {hex})".format(
+        char=chr(char), int=char, hex=hex(char)))
