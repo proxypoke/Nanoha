@@ -30,7 +30,7 @@ WARNINGS := -Wall -Wextra #-pedantic -Wshadow -Wpointer-arith -Wcast-align \
             -Wuninitialized -Wconversion -Wstrict-prototypes
 CFLAGS := -g -std=c99 $(WARNINGS) -O2
 
-.PHONY: all clean
+.PHONY: all clean man
 
 all: nanoha.bin
 
@@ -50,6 +50,9 @@ libc/libc.a: $(LIBCOBJ)
 clean:
 	-@$(RM) $(wildcard $(OBJFILES) $(DEPFILES) nanoha.bin)
 	-@$(RM) $(wildcard $(LIBCOBJ) $(LIBCDEP) libc/libc.a)
+
+man:
+	@a2x --no-xmllint --format manpage README.asciidoc
 
 
 # Dependenies
