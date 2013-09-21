@@ -55,7 +55,7 @@ man:
 	@a2x --no-xmllint --format manpage README.asciidoc
 
 
-# Dependenies
+# Dependencies
 
 -include $(DEPFILES)
 -include $(LIBCDEP)

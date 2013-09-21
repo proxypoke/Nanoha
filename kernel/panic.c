@@ -10,5 +10,8 @@
 
 void panic(const char* reason) {
     kprint("Kernel panic: %", reason);
-    for (;;);
+    __asm__("cli");
+    for (;;) {
+        __asm__("hlt");
+    }
 }
