@@ -38,7 +38,7 @@ nanoha.bin: linker.ld libc/libc.a $(OBJFILES)
 	@$(CC) -T linker.ld \
 		-o nanoha.bin \
 		-ffreestanding \
-		-O2 \
+		-Og \
 		-nostdlib \
 		-lgcc \
 		$(OBJFILES) \
