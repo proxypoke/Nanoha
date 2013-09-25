@@ -17,7 +17,7 @@ static size_t get_memsize() {
     return MEMORY_SIZE;
 }
 
-void* alloc_pages(size_t n) {
+void* mm_alloc_pages(size_t n) {
     if (first_free + (n * PAGE_SIZE) > end_of_memory) {
         return NULL;
     }
@@ -26,7 +26,7 @@ void* alloc_pages(size_t n) {
     return start;
 }
 
-void free_pages(void* start, size_t n) {
+void mm_free_pages(void* start, size_t n) {
     /* TODO */
 }
 

@@ -9,7 +9,8 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#define PAGE_SIZE 4096
+/* We use 4MiB pages. */
+#define PAGE_SIZE 4 * 1024 * 1024
 /* TODO: For now, use 256MiB as the memory size. Get the actual memory size from
  * the bootloader later. */
 #define MEMORY_SIZE 268435456
@@ -18,10 +19,10 @@
 
 /* Request allocation of n contiguous pages. Returns a pointer to the start of
  * the group. */
-void* alloc_pages(size_t n);
+void* mm_alloc_pages(size_t n);
 
 /* Free the given number of pages. */
-void free_pages(void* start, size_t n);
+void mm_free_pages(void* start, size_t n);
 
 /* Initialize the low level memory manager */
 void mm_init(void);
