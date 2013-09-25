@@ -8,8 +8,10 @@
 
 #include <kernel.h>
 #include <vga.h>
+#include <mm.h>
 
 void kernel_main(void) {
     term_init();
+    mm_init();
     kprint("Standby ready, set up!\n");
 }
