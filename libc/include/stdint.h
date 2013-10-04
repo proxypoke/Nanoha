@@ -127,7 +127,7 @@ typedef unsigned long long uint_fast64_t;
 #define SIZE_MAX UINT_MAX(32)
 
 #define WCHAR_MIN 0
-#define WCHAR_MAX UINT_MAX(32)
+#define WCHAR_MAX UINTN_MAX(32)
 
 /* signal.h */
 /* TODO:
