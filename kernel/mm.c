@@ -26,7 +26,8 @@ void* mm_alloc_pages(size_t n) {
     return start;
 }
 
-void mm_free_pages(void* start, size_t n) {
+void mm_free_pages(void* start __attribute__((unused)),
+                   size_t n __attribute__((unused))) {
     /* TODO */
 }
 
