@@ -73,10 +73,21 @@ static void _map_page(uint32_t vaddr, uint32_t paddr) {
     *(pt_ptr + pt_offset + (pd_offset << 10)) = new_entry;
 }
 
+/* Map the physical memory from pstart to pend to the virtual address. */
+static void _map_memory(uint32_t vstart, uint32_t pstart, uint32_t pend) {
+    while (pstart < pend) {
+        _map_page(vstart, pstart);
+        pstart += 4096;
+        vstart += 4096;
+    }
+}
+
 void mm_init(void) {
     first_free = (uintptr_t*) MEMORY_START;
     end_of_memory = first_free + get_memsize();
 
     _init_page_directory();
+    /* Identity map the first 10MiB of memory. */
+    _map_memory(0, 0, (10 << 10) << 10);
     /*_enable_paging();*/
 }
