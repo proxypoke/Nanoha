@@ -44,7 +44,7 @@ static inline void _enable_paging(void) {
  * TODO: less magic numbers */
 static void _init_page_directory(void) {
     struct pde* pd_ptr = (struct pde*) PD_PHYSICAL_ADDRESS;
-    uint32_t pt_ptr = PT_PHYSICAL_ADDRESS;
+    uint32_t pt_ptr    = PT_PHYSICAL_ADDRESS;
 
     while (pd_ptr < (struct pde*) PT_PHYSICAL_ADDRESS) {
         struct pde new_entry;
@@ -56,6 +56,21 @@ static void _init_page_directory(void) {
         pd_ptr++;
         pt_ptr += 4096 * 1024;
     }
+}
+
+/* Map a page block into virtual memory. */
+static void _map_page(uint32_t vaddr, uint32_t paddr) {
+    uint32_t pd_offset = vaddr >> 22;
+    uint32_t pt_offset = (vaddr << 10) >> 22;
+    struct pte* pt_ptr = (struct pte*) PT_PHYSICAL_ADDRESS;
+
+    struct pte new_entry;
+    new_entry.address   = paddr >> 12;
+    new_entry.readwrite = true;
+    new_entry.present   = true;
+
+    /* TODO: There should be some error handling here. */
+    *(pt_ptr + pt_offset + (pd_offset << 10)) = new_entry;
 }
 
 void mm_init(void) {
