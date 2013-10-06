@@ -7,6 +7,7 @@
  */
 
 #include <mm.h>
+#include <stdbool.h>
 
 static void* first_free;
 static void* end_of_memory;
@@ -39,9 +40,28 @@ static inline void _enable_paging(void) {
     );
 }
 
+/* For every page table, make an entry in the Page Directory.
+ * TODO: less magic numbers */
+static void _init_page_directory(void) {
+    struct pde* pd_ptr = (struct pde*) PD_PHYSICAL_ADDRESS;
+    uint32_t pt_ptr = PT_PHYSICAL_ADDRESS;
+
+    while (pd_ptr < (struct pde*) PT_PHYSICAL_ADDRESS) {
+        struct pde new_entry;
+        new_entry.address   = pt_ptr >> 12;
+        new_entry.readwrite = true;
+        new_entry.present   = true;
+        *pd_ptr = new_entry;
+
+        pd_ptr++;
+        pt_ptr += 4096 * 1024;
+    }
+}
+
 void mm_init(void) {
     first_free = (uintptr_t*) MEMORY_START;
     end_of_memory = first_free + get_memsize();
 
+    _init_page_directory();
     /*_enable_paging();*/
 }
